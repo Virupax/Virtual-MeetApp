@@ -1,0 +1,13 @@
+<nav class="nav">
+    <% if(locals.userSession !== undefined && userSession){ %>
+        <a href="/connections">Connections</a>
+        <div class="nav-placeholder">
+            <a>Welcome <%= userSession._user._firstName %></a>
+        </div>    
+    <% } else {%>
+        <a href="/index">Home</a>
+        <a href="/connections">Connections</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+    <% } %>
+</nav>

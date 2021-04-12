@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Connection</title>
+	<link rel="stylesheet" href="../assets/CSS/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/CSS/style.css">
+	<script src="../assets/JS/jquery-3.4.1.min.js"></script>
+	<script src="../assets/JS/virtualmeetapp.js"></script>
+</head>
+
+<body>
+	<%- include('partials/header.ejs') %>
+	<%- include('partials/navigation.ejs') %>
+	<%- include ('../utility/helpers/ejsUtil.ejs') %>
+
+	<%if(locals.errors !== undefined && errors){ %>
+		<script>
+			console.log('<%- errors.redirect %>')
+			window.alert('<%- errors.msg %>');
+			window.location.href = '<%- errors.redirect %>';
+		</script>
+	<%} else {%>
+	<div class="main">
+		<section class="body-left">
+			<div class="connection">
+				<img src="../assets/Images/Iconset/<%= replaceSpaceWithUnderscore(data._category) %>.png" alt="">
+				<h1><%= data._name %></h1>
+				<article>
+					<header>
+						<!-- <img src="../assets/Images/Flags/india.png" alt="">
+						<img src="../assets/Images/Flags/australia.png" alt=""> -->
+						<h4><%= data._category %></h4>
+						<h5><%= data._subCategory %></h5>
+						<br>
+						<form method="POST" action="/savedConnections">
+							<input type="hidden" name="connectionID" value="<%= data._id %>" />
+							<input type="hidden" name="_method" value="POST" />
+							<input type="submit" name="rsvp" class="join" value="Join" />
+							<input type="submit" name="rsvp" class="star" value="&#9734;" />
+						</form>
+					</header>
+					<br>
+					<p><b>Joining Deadline:</b> <%= data._dateAndTime %></p>
+					<br>
+					<p><b>Location:</b> <%= data._location %></p>
+					<br>
+					<h4><b>Details</b></h4>
+					<%= data._detials %>
+
+				</article>
+			</div>
+		</section>
+		<aside class="body-right">
+			<h2>Chat</h2>
+			<textarea placeholder="Talk to your Team Mates!!" name="message" required></textarea>
+			<button type="button" class="send">Send</button>
+			<br>
+			<br>
+			<label><b>Conversations</b></label>
+			<div class="messages">
+				<div class="message">
+					<img src="../assets/Images/Avatarset/avatar_(9).png" alt="Avatar">
+					<span class="time">12:02 PM</span>
+					<p>Are we playing today's league?</p>
+				</div>
+				<div class="message">
+					<img src="../assets/Images/Avatarset/avatar_(13).png" alt="Avatar">
+					<span class="time">12:24 PM</span>
+					<p>Yeah!!!!!</p>
+				</div>
+				<div class="message">
+					<img src="../assets/Images/Avatarset/avatar_(9).png" alt="Avatar">
+					<span class="time">12:02 PM</span>
+					<p>How much is the entry amount?</p>
+				</div>
+				<div class="message">
+					<img src="../assets/Images/Avatarset/avatar_(13).png" alt="Avatar">
+					<span class="time">12:24 PM</span>
+					<p>$10</p>
+				</div>
+				<div class="message">
+					<img src="../assets/Images/Avatarset/avatar_(9).png" alt="Avatar">
+					<span class="time">12:02 PM</span>
+					<p>Okay!!!</p>
+				</div>
+			</div>
+		</aside>
+	</div>
+	<% } %>
+	<%- include('partials/footer.ejs') %>
+</body>
+</html>

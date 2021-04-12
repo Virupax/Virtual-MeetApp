@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Connections</title>
+	<link rel="stylesheet" href="../assets/CSS/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/CSS/style.css">
+</head>
+
+<body>
+	<%- include('partials/header.ejs') %>
+	<%- include('partials/navigation.ejs') %>
+	<%- include ('../utility/helpers/ejsUtil.ejs') %> 
+	<div class="main">
+		<section class="listicon">
+			<h3>Leagues, Clan Wars and Events</h3>
+			<br>
+			<% for(category in data){ %>
+			<img src="../assets/Images/Iconset/<%= replaceSpaceWithUnderscore(category) %>.png" alt="">
+			<h5><b><%= category %></b></h5>
+			<% for(subCategory in data[category]){ %>
+			<ul>
+				<li>
+					<img src="../assets/Images/Iconset/<%= replaceSpaceWithUnderscore(subCategory) %>.png" alt="">
+					<h6><b><%= subCategory %></b></h6>
+					<ul>
+						<% for(item in data[category][subCategory]){ %>
+						<li><a href="/connection/<%= data[category][subCategory][item]._id %>"><%= data[category][subCategory][item]._name %></a></li>
+						<% }%>
+					</ul>
+				</li>
+			</ul>
+			<% }} %>
+		</section>
+	</div>
+	<%- include('partials/footer.ejs') %>
+</body>
+
+</html>

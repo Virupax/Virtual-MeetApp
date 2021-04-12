@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Saved Connections</title>
+		<link rel="stylesheet" href="../assets/CSS/bootstrap.min.css">
+		<link rel="stylesheet" href="../assets/CSS/style.css">
+	</head>
+	<body>
+		<%- include('partials/header.ejs') %>
+		<%- include('partials/navigation.ejs') %>		
+		<%- include ('../utility/helpers/ejsUtil.ejs') %> 
+		
+		<div class="main">
+			<h4><%= userSession._user._firstName %>'s Connections</h4>
+			<table class="table table-striped">
+				<tr>
+					<th>Connection</th>
+					<th>Category</th>
+					<th>Sub Category</th>
+					<th>Participating?</th>
+					<th>Deadline</th>
+					<th>Response</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<% if(userSession._userConnections.length == 0) {%>
+				<tr>
+					<td colspan="8" ><span>No Connections found!!!</span></td>
+				</tr>
+				<% } %>
+				<% for(userConnection in userSession._userConnections){ %>
+				<tr>
+					<td><%= userSession._userConnections[userConnection]._connection._name %></td>
+					<td><%= userSession._userConnections[userConnection]._connection._category %></td>
+					<td><%= userSession._userConnections[userConnection]._connection._subCategory %></td>
+					<td><%= userSession._userConnections[userConnection]._rsvp %></td>
+					<td><%= formatDateTime(userSession._userConnections[userConnection]._connection._dateAndTime) %></td>
+					<td><%= formatDateTime(userSession._userConnections[userConnection]._dateAndTime) %></td>
+					<td>
+						<a href="/connection/<%= userSession._userConnections[userConnection]._connection._id %>" class="btn btn-warning" role="button">Update</a>
+					</td>
+					<td>
+						<form method="POST" action="/savedConnections">
+							<input type="hidden" name="connectionID" value="<%= userSession._userConnections[userConnection]._connection._id %>" />
+							<input type="hidden" name="rsvp" value="<%= userSession._userConnections[userConnection]._rsvp %>" />
+							<input type="hidden" name="_method" value="DELETE"/>
+							<input type="submit" class="btn btn-danger" value="Delete" />
+						</form>
+					</td>
+				</tr>
+				<% } %>
+			</table>
+		</div>
+		<%- include('partials/footer.ejs') %>
+	</body>
+
+</html>

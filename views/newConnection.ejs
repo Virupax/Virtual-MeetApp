@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual MeetApp</title>
+    <link rel="stylesheet" href="../assets/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <%- include('partials/navigation.ejs') %>
+    <div class="main">
+        <div class="container">
+            <h2>Create new connection</h2>
+            <form action="/newConnection" method="post">
+                <% if(locals.errors !== undefined && errors){ %>
+                    <% for(error in errors){ %>
+                        <span style="color: red;"> <%= errors[error].param %> <%= errors[error].msg %>  </span> <br>							
+                    <% } %>
+                <% } %>
+                <div class="form-group">
+                    <label for="category">Connection Category:</label>
+                    <select class="form-control" id="category" name="category">
+                            <option value="">----Select One----</option>
+                            <option value="Fantasy Leagues">Group Fantasy league (Cricket, Soccer etc.)</option>
+                            <option value="Clan Wars">Clan Wars (Call of Duty, Clash of Clans etc.)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subCategory">Connection Sub Category:</label>
+                    <select class="form-control" id="subCategory" name="subCategory">
+                            <option value="">----Select One----</option>
+                            <option value="Cricket">Cricket</option>
+                            <option value="Soccer">Soccer</option>
+                            <option value="Call of Duty">Call of Duty</option>
+                            <option value="Clash of clans">Clash of clans</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter name" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="detail">Details:</label>
+                    <textarea class="form-control" rows="5" placeholder="Enter Desciption" id="detail" name="detail"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">Where:</label>
+                    <input type="text" class="form-control" placeholder="Enter location" id="location" name="location">
+                </div>
+                <div class="form-group">
+                    <label for="dateAndTime">When:</label>
+                    <input type="datetime-local" class="form-control" id="dateAndTime" name="dateAndTime">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Connection</button>
+            </form>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+</body>
+
+</html>

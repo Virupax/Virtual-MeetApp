@@ -1,0 +1,27 @@
+{
+  "name": "virtual-meetapp",
+  "version": "1.0.0",
+  "description": "This platform offers Group Fantasy Leagues, Recruit to clan, team communication and host clan wars",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.4.1",
+    "helmet": "^3.22.0",
+    "mongoose": "^5.9.10",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "GroupFantasyLeague",
+    "ClanWars"
+  ],
+  "author": "Virupaxgouda C KumbarKattimani",
+  "license": "ISC"
+}

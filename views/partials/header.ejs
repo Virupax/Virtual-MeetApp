@@ -1,0 +1,13 @@
+<header class="header">
+    <a href="/index"><img src="../assets/Images/Logo.png" class="logo" alt="Logo"></a>
+    <div class="header-right">
+        <a href="/newConnection">Start New Virtual Meet</a>
+        <% if(locals.userSession !== undefined && userSession){ %>
+            <a href="/logout">Log out</a>
+            <a href="/savedConnections">My Connections</a>
+        <% } else {%>
+            <a href="/login">Login</a>
+            <a href="/login">Sign up</a>
+        <% } %>
+    </div>
+</header>

@@ -1,0 +1,14 @@
+<%
+replaceSpaceWithUnderscore = function(value) {
+    return value.replace(/ /g,"");
+}
+
+formatDateTime = function(value) {
+    return new Date(value).toLocaleString()
+}
+
+formatTime = function(value) {
+    return new Date(value).getHours() + ":" + new Date(value).getMinutes()
+}
+
+%>

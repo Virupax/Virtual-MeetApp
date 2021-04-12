@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="../assets/CSS/bootstrap.min.css">
+		<link rel="stylesheet" href="../assets/CSS/style.css">
+	</head>
+	<body>
+		<%- include('partials/header.ejs') %>
+		<%- include('partials/navigation.ejs') %>		
+		
+		<div class="main">
+	        <div class="container login">
+	            <h2>Welcome to Virtual MeetApp!</h2>
+	            <p>Please enter your username and password to login</p>
+				<form method="POST" action="/login">
+					<% if(locals.errors !== undefined && errors){ %>
+						<% for(error in errors){ %>
+							<span style="color: red;"> <%= errors[error].msg %>  </span> <br>							
+						<% } %>
+					<% } %>
+	                <div class="form-group">
+	                    <label for="email">Username:</label>
+	                    <input type="email" class="form-control" placeholder="Enter Username" id="email" name="email">
+	                </div>
+	                <div class="form-group">
+	                    <label for="password">Password:</label>
+	                    <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password">
+	                </div>
+	                <button type="submit" class="btn btn-primary">Submit</button>
+	            </form>
+	        </div>
+	    </div>
+		<%- include('partials/footer.ejs') %>
+	</body>
+
+</html>
